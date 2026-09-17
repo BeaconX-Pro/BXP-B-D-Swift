@@ -44,7 +44,7 @@ public final class MKBXDTxPowerCell: MKSwiftBaseCell {
     private lazy var txPowerMsgLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.attributedText = MKSwiftUIAdaptor.attributedString(
+        label.attributedText = MKSwiftUIAdaptor.createAttributedString(strings:
             ["Tx Power", "   (-40,-20,-16,-12,-8,-4,0,+3,+4)"],
             fonts: [MKFont.font(15), MKFont.font(13)],
             colors: [MKColor.defaultText, UIColor(red: 223/255.0, green: 223/255.0, blue: 223/255.0, alpha: 1)]

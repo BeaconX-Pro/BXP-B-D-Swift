@@ -85,8 +85,8 @@ public final class MKBXDSlotUIDCell: MKSwiftBaseCell {
     }()
 
     private lazy var namespaceTextField: MKSwiftTextField = {
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "10bytes",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "10bytes",
                                                         textType: .hexCharOnly)
         tf.maxLength = 20
         tf.textChangedBlock = { [weak self] text in
@@ -114,8 +114,8 @@ public final class MKBXDSlotUIDCell: MKSwiftBaseCell {
     }()
 
     private lazy var instanceTextField: MKSwiftTextField = {
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "6bytes",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "6bytes",
                                                         textType: .hexCharOnly)
         tf.maxLength = 12
         tf.textChangedBlock = { [weak self] text in

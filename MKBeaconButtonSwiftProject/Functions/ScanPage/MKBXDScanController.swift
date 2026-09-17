@@ -50,8 +50,8 @@ public final class MKBXDScanController: MKSwiftBaseViewController {
         return btn
     }()
 
-    private lazy var searchButton: MKBXScanSearchButton = {
-        let btn = MKBXScanSearchButton()
+    private lazy var searchButton: MKSwiftBXScanSearchButton = {
+        let btn = MKSwiftBXScanSearchButton()
         btn.delegate = self
         return btn
     }()
@@ -60,8 +60,8 @@ public final class MKBXDScanController: MKSwiftBaseViewController {
 
     private lazy var dataList: [MKBXDScanDataModel] = []
 
-    private lazy var buttonModel: MKBXScanSearchButtonModel = {
-        let m = MKBXScanSearchButtonModel()
+    private lazy var buttonModel: MKSwiftBXScanSearchButtonModel = {
+        let m = MKSwiftBXScanSearchButtonModel()
         m.placeholder = "Edit Filter"
         m.minSearchRssi = -100
         m.searchRssi = -100
@@ -229,7 +229,13 @@ public final class MKBXDScanController: MKSwiftBaseViewController {
         tableView.reloadData()
         // 刷新顶部设备数量
         defaultTitle = "DEVICE(\(dataList.count))"
-        refreshIcon.layer.add(MKSwiftUIAdaptor.refreshAnimation(2.0), forKey: "mk_refreshAnimationKey")
+        let refreshRotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        refreshRotationAnimation.toValue = Double.pi * 2.0
+        refreshRotationAnimation.duration = 2.0
+        refreshRotationAnimation.isCumulative = true
+        refreshRotationAnimation.repeatCount = .infinity
+        refreshRotationAnimation.isRemovedOnCompletion = false
+        refreshIcon.layer.add(refreshRotationAnimation, forKey: "mk_refreshAnimationKey")
         MKBXDCentralManager.shared.startScan()
     }
 
@@ -376,9 +382,9 @@ public final class MKBXDScanController: MKSwiftBaseViewController {
                 UserDefaults.standard.set(self.asciiText, forKey: localPasswordKey)
             }
             MKSwiftHudManager.shared.hide()
-            MKBXDBaseLogManager.deleteLog(withFileName: "/Single press trigger event")
-            MKBXDBaseLogManager.deleteLog(withFileName: "/Double press trigger event")
-            MKBXDBaseLogManager.deleteLog(withFileName: "/Long press trigger event")
+            MKSwiftBleLogManager.deleteLog(fileName: "Single press trigger event")
+            MKSwiftBleLogManager.deleteLog(fileName: "Double press trigger event")
+            MKSwiftBleLogManager.deleteLog(fileName: "Long press trigger event")
             self.perform(#selector(self.pushTabBarPage), with: nil, afterDelay: 0.6)
         }, failedBlock: { [weak self] error in
             guard let self = self else { return }
@@ -477,13 +483,13 @@ extension MKBXDScanController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: - MKBXScanSearchButtonDelegate
+// MARK: - MKSwiftBXScanSearchButtonDelegate
 
-extension MKBXDScanController: MKBXScanSearchButtonDelegate {
+extension MKBXDScanController: MKSwiftBXScanSearchButtonDelegate {
 
     public func mk_bx_scanSearchButtonMethod() {
         // ⚠️ 按工程实际 Filter View 调用方式调整
-        MKBXScanFilterView.showSearch(name: buttonModel.searchName,
+        MKSwiftBXScanFilterView.showSearch(name: buttonModel.searchName,
                                      macAddress: buttonModel.searchMac,
                                      rssi: buttonModel.searchRssi) { [weak self] searchName, searchMacAddress, searchRssi in
             guard let self = self else { return }

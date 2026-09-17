@@ -57,8 +57,8 @@ public final class MKBXDDeviceIDCell: MKSwiftBaseCell {
 
     private lazy var textField: MKSwiftTextField = {
         // ⚠️ 按工程实际 MKSwiftTextField 接口调整
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "1-6 bytes",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "1-6 bytes",
                                                         textType: .hexCharOnly)
         tf.maxLength = 12
         tf.textChangedBlock = { [weak self] text in

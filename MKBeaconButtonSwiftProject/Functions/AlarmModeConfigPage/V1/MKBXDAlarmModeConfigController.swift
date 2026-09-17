@@ -285,7 +285,7 @@ public final class MKBXDAlarmModeConfigController: MKSwiftBaseViewController {
     private func loadSection4Datas() {
         let m = MKSwiftNormalSliderCellModel()
         m.index = 0
-        m.msg = MKSwiftUIAdaptor.attributedString(
+        m.msg = MKSwiftUIAdaptor.createAttributedString(strings:
             ["Ranging data", "   (-100dBm~0dBm)"],
             fonts: [MKFont.font(15), MKFont.font(13)],
             colors: [MKColor.defaultText, UIColor(red: 223/255.0, green: 223/255.0, blue: 223/255.0, alpha: 1)]

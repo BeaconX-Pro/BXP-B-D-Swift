@@ -71,9 +71,8 @@ public final class MKBXDAlarmSyncTimeView: UIView {
             make.top.equalTo(10)
             make.height.equalTo(30)
         }
-        let msgSize = NSString.mk_size(withText: msgLabel.text ?? "",
-                                       andFont: msgLabel.font,
-                                       andMaxSize: CGSize(width: MKScreen.width - 3 * 15 - 45, height: .greatestFiniteMagnitude))
+        let msgSize = (msgLabel.text ?? "").size(withFont: msgLabel.font,
+                                                 maxSize: CGSize(width: MKScreen.width - 3 * 15 - 45, height: .greatestFiniteMagnitude))
         msgLabel.snp.makeConstraints { make in
             make.left.equalTo(15)
             make.right.equalTo(syncButton.snp.left).offset(-15)

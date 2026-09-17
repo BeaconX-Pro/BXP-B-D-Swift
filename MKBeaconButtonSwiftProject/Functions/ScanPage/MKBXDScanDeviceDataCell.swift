@@ -173,9 +173,8 @@ public final class MKBXDScanDeviceDataCell: MKSwiftBaseCell {
             make.height.equalTo(MKFont.font(10).lineHeight)
         }
         let nameWidth = contentView.frame.size.width - 2 * offsetX - rssiIconWidth - 10 - 8 - connectButtonWidth
-        let nameSize = NSString.mk_size(withText: nameLabel.text ?? "",
-                                        andFont: nameLabel.font,
-                                        andMaxSize: CGSize(width: nameWidth, height: .greatestFiniteMagnitude))
+        let nameSize = (nameLabel.text ?? "").size(withFont: nameLabel.font,
+                                                   maxSize: CGSize(width: nameWidth, height: .greatestFiniteMagnitude))
         nameLabel.snp.remakeConstraints { make in
             make.left.equalTo(rssiIcon.snp.right).offset(20)
             make.centerY.equalTo(rssiIcon)

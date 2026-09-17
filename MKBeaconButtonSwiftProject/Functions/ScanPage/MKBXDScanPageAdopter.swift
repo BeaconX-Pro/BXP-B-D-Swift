@@ -75,7 +75,7 @@ public enum MKBXDScanPageAdopter {
     public static func parseAdvDatas(_ advModel: MKBXDBaseAdvModel) -> MKBXDScanFrameModel? {
         if let beacon = advModel as? MKBXDBeacon {
             // iBeacon
-            let cellModel = MKBXScanBeaconCellModel()
+            let cellModel = MKSwiftBXScanBeaconCellModel()
             cellModel.rssi = "\(beacon.rssi.intValue)"
             cellModel.rssi1M = "\(beacon.rssi1M.intValue)"
             cellModel.txPower = "\(beacon.txPower.intValue)"
@@ -87,7 +87,7 @@ public enum MKBXDScanPageAdopter {
         }
         if let uidBeacon = advModel as? MKBXDUIDBeacon {
             // UID
-            let cellModel = MKBXScanUIDCellModel()
+            let cellModel = MKSwiftBXScanUIDCellModel()
             cellModel.txPower = "\(uidBeacon.txPower.intValue)"
             cellModel.namespaceId = uidBeacon.namespaceId
             cellModel.instanceId = uidBeacon.instanceId
@@ -231,15 +231,15 @@ public enum MKBXDScanPageAdopter {
 
     /// 根据不同的 dataModel 加载 cell
     public static func loadCellWithTableView(_ tableView: UITableView, dataModel: MKBXDScanFrameModel) -> UITableViewCell {
-        if let model = dataModel as? MKBXScanUIDCellModel {
+        if let model = dataModel as? MKSwiftBXScanUIDCellModel {
             // UID
-            let cell = MKBXScanUIDCell.initCell(with: tableView)
+            let cell = MKSwiftBXScanUIDCell.initCell(with: tableView)
             cell.dataModel = model
             return cell
         }
-        if let model = dataModel as? MKBXScanBeaconCellModel {
+        if let model = dataModel as? MKSwiftBXScanBeaconCellModel {
             // iBeacon
-            let cell = MKBXScanBeaconCell.initCell(with: tableView)
+            let cell = MKSwiftBXScanBeaconCell.initCell(with: tableView)
             cell.dataModel = model
             return cell
         }
@@ -262,13 +262,13 @@ public enum MKBXDScanPageAdopter {
 
     /// 根据不同的 dataModel 返回 cell 的高度
     public static func loadCellHeightWithDataModel(_ dataModel: MKBXDScanFrameModel) -> CGFloat {
-        if dataModel is MKBXScanUIDCellModel {
+        if dataModel is MKSwiftBXScanUIDCellModel {
             // UID
             return 85
         }
-        if let model = dataModel as? MKBXScanBeaconCellModel {
+        if let model = dataModel as? MKSwiftBXScanBeaconCellModel {
             // iBeacon
-            return MKBXScanBeaconCell.getCellHeight(with: model.uuid)
+            return MKSwiftBXScanBeaconCell.getCellHeight(with: model.uuid)
         }
         if dataModel is MKBXDScanDeviceInfoCellModel {
             // Device Info

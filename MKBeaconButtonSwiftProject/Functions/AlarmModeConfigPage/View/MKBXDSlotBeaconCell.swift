@@ -77,8 +77,8 @@ public final class MKBXDSlotBeaconCell: MKSwiftBaseCell {
     }()
 
     private lazy var majorTextField: MKSwiftTextField = {
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "0~65535",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "0~65535",
                                                         textType: .realNumberOnly)
         tf.maxLength = 5
         tf.textChangedBlock = { [weak self] text in
@@ -97,8 +97,8 @@ public final class MKBXDSlotBeaconCell: MKSwiftBaseCell {
     }()
 
     private lazy var minorTextField: MKSwiftTextField = {
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "0~65535",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "0~65535",
                                                         textType: .realNumberOnly)
         tf.maxLength = 5
         tf.textChangedBlock = { [weak self] text in
@@ -126,8 +126,8 @@ public final class MKBXDSlotBeaconCell: MKSwiftBaseCell {
     }()
 
     private lazy var uuidTextField: MKSwiftTextField = {
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "16bytes",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "16bytes",
                                                         textType: .hexCharOnly)
         tf.maxLength = 32
         tf.textChangedBlock = { [weak self] text in

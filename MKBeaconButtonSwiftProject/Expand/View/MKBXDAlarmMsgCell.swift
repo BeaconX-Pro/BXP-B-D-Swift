@@ -19,9 +19,8 @@ public final class MKBXDAlarmMsgCellModel: NSObject {
     public var msg: String = ""
 
     public func fetchCellHeight() -> CGFloat {
-        let msgSize = NSString.mk_size(withText: msg,
-                                       andFont: MKFont.font(13),
-                                       andMaxSize: CGSize(width: MKScreen.width - 2 * 15, height: .greatestFiniteMagnitude))
+        let msgSize = msg.size(withFont: MKFont.font(13),
+                               maxSize: CGSize(width: MKScreen.width - 2 * 15, height: .greatestFiniteMagnitude))
         return msgSize.height + 20
     }
 }
@@ -59,9 +58,8 @@ public final class MKBXDAlarmMsgCell: MKSwiftBaseCell {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let msgSize = NSString.mk_size(withText: msgLabel.text ?? "",
-                                       andFont: msgLabel.font,
-                                       andMaxSize: CGSize(width: MKScreen.width - 2 * 15, height: .greatestFiniteMagnitude))
+        let msgSize = (msgLabel.text ?? "").size(withFont: msgLabel.font,
+                                                 maxSize: CGSize(width: MKScreen.width - 2 * 15, height: .greatestFiniteMagnitude))
         msgLabel.snp.remakeConstraints { make in
             make.left.equalTo(15)
             make.right.equalTo(-15)

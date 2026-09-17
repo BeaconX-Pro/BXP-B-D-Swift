@@ -218,7 +218,13 @@ public final class MKBXDSyncEventHeaderView: UIView {
 
         if syncButton.isSelected {
             // 开始旋转
-            syncIcon.layer.add(MKSwiftUIAdaptor.refreshAnimation(2.0), forKey: "synIconAnimationKey")
+            let refreshRotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+            refreshRotationAnimation.toValue = Double.pi * 2.0
+            refreshRotationAnimation.duration = 2.0
+            refreshRotationAnimation.isCumulative = true
+            refreshRotationAnimation.repeatCount = .infinity
+            refreshRotationAnimation.isRemovedOnCompletion = false
+            syncIcon.layer.add(refreshRotationAnimation, forKey: "synIconAnimationKey")
             syncLabel.text = "Stop"
         } else {
             syncLabel.text = "Sync"

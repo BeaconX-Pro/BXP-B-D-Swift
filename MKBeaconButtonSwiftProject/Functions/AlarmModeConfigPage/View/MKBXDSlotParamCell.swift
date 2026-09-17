@@ -96,8 +96,8 @@ public final class MKBXDSlotParamCell: MKSwiftBaseCell {
     }()
 
     private lazy var intervalField: MKSwiftTextField = {
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "1~100",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "1~100",
                                                         textType: .realNumberOnly)
         tf.font = MKFont.font(12)
         tf.maxLength = 3
@@ -184,7 +184,7 @@ public final class MKBXDSlotParamCell: MKSwiftBaseCell {
     // MARK: - Private: Setup
 
     private func setupTxPowerParams() {
-        txPowerLabel.attributedText = MKSwiftUIAdaptor.attributedString(
+        txPowerLabel.attributedText = MKSwiftUIAdaptor.createAttributedString(strings:
             ["Tx power", "   (-40,-20,-16,-12,-8,-4,0,+3,+4)"],
             fonts: [MKFont.font(13), MKFont.font(12)],
             colors: [MKColor.defaultText, UIColor(red: 223/255.0, green: 223/255.0, blue: 223/255.0, alpha: 1)]
@@ -300,15 +300,15 @@ public final class MKBXDSlotParamCell: MKSwiftBaseCell {
         let fonts: [UIFont] = [MKFont.font(13), MKFont.font(12)]
         switch dataModel?.cellType ?? .alarmInfo {
         case .uid:
-            rssiLabel.attributedText = MKSwiftUIAdaptor.attributedString(
+            rssiLabel.attributedText = MKSwiftUIAdaptor.createAttributedString(strings:
                 ["RSSI@0m", "   (-100dBm ~ 0dBm)"],
                 fonts: fonts, colors: colors)
         case .beacon:
-            rssiLabel.attributedText = MKSwiftUIAdaptor.attributedString(
+            rssiLabel.attributedText = MKSwiftUIAdaptor.createAttributedString(strings:
                 ["RSSI@1m", "   (-100dBm ~ 0dBm)"],
                 fonts: fonts, colors: colors)
         case .alarmInfo:
-            rssiLabel.attributedText = MKSwiftUIAdaptor.attributedString(
+            rssiLabel.attributedText = MKSwiftUIAdaptor.createAttributedString(strings:
                 ["Ranging data", "   (-100dBm ~ 0dBm)"],
                 fonts: fonts, colors: colors)
         }

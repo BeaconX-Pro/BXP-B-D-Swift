@@ -129,7 +129,13 @@ public final class MKBXDAccelerationHeaderView: UIView {
         synIcon.layer.removeAnimation(forKey: "bxd_synIconAnimationKey")
         delegate?.bxd_updateThreeAxisNotifyStatus(syncButton.isSelected)
         if syncButton.isSelected {
-            synIcon.layer.add(MKSwiftUIAdaptor.refreshAnimation(2.0), forKey: "bxd_synIconAnimationKey")
+            let refreshRotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+            refreshRotationAnimation.toValue = Double.pi * 2.0
+            refreshRotationAnimation.duration = 2.0
+            refreshRotationAnimation.isCumulative = true
+            refreshRotationAnimation.repeatCount = .infinity
+            refreshRotationAnimation.isRemovedOnCompletion = false
+            synIcon.layer.add(refreshRotationAnimation, forKey: "bxd_synIconAnimationKey")
             syncLabel.text = "Stop"
             return
         }

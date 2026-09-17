@@ -52,8 +52,8 @@ public final class MKBXDAbnormalInactivityTimeCell: MKSwiftBaseCell {
 
     private lazy var textField: MKSwiftTextField = {
         // ⚠️ 按工程实际 MKSwiftTextField 接口调整
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "1~65535",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "1~65535",
                                                         textType: .realNumberOnly)
         tf.maxLength = 5
         tf.textChangedBlock = { [weak self] text in
@@ -114,9 +114,8 @@ public final class MKBXDAbnormalInactivityTimeCell: MKSwiftBaseCell {
             make.centerY.equalTo(textField)
             make.height.equalTo(MKFont.font(15).lineHeight)
         }
-        let noteSize = NSString.mk_size(withText: noteMsgLabel.text ?? "",
-                                        andFont: noteMsgLabel.font,
-                                        andMaxSize: CGSize(width: MKScreen.width - 30, height: .greatestFiniteMagnitude))
+        let noteSize = (noteMsgLabel.text ?? "").size(withFont: noteMsgLabel.font,
+                                                      maxSize: CGSize(width: MKScreen.width - 30, height: .greatestFiniteMagnitude))
         noteMsgLabel.snp.remakeConstraints { make in
             make.left.equalTo(15)
             make.right.equalTo(-15)

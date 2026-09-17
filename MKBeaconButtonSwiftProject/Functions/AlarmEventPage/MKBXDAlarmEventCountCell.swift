@@ -87,9 +87,8 @@ public final class MKBXDAlarmEventCountCell: MKSwiftBaseCell {
             make.centerY.equalTo(contentView)
             make.height.equalTo(buttonHeight)
         }
-        let msgSize = NSString.mk_size(withText: msgLabel.text ?? "",
-                                       andFont: msgLabel.font,
-                                       andMaxSize: CGSize(width: MKScreen.width - 30 - 20 - 100 - buttonWidth, height: .greatestFiniteMagnitude))
+        let msgSize = (msgLabel.text ?? "").size(withFont: msgLabel.font,
+                                                 maxSize: CGSize(width: MKScreen.width - 30 - 20 - 100 - buttonWidth, height: .greatestFiniteMagnitude))
         msgLabel.snp.remakeConstraints { make in
             make.left.equalTo(15)
             make.right.equalTo(countLabel.snp.left).offset(-15)

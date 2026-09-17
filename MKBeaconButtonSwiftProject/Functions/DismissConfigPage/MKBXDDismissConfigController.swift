@@ -276,9 +276,8 @@ public final class MKBXDDismissConfigController: MKSwiftBaseViewController {
         footerView.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
 
         let noteMsg = "*The  Dismiss alarm notification here mainly refers to the dismiss alarm notification setting in Advertising Mode under non-connected status."
-        let noteSize = NSString.mk_size(withText: noteMsg,
-                                        andFont: MKFont.font(12),
-                                        andMaxSize: CGSize(width: MKScreen.width - 30, height: .greatestFiniteMagnitude))
+        let noteSize = noteMsg.size(withFont: MKFont.font(12),
+                                    maxSize: CGSize(width: MKScreen.width - 30, height: .greatestFiniteMagnitude))
         let noteLabel = UILabel(frame: CGRect(x: 15, y: 10, width: MKScreen.width - 30, height: noteSize.height))
         noteLabel.textColor = UIColor(red: 118/255.0, green: 118/255.0, blue: 118/255.0, alpha: 1)
         noteLabel.textAlignment = .left

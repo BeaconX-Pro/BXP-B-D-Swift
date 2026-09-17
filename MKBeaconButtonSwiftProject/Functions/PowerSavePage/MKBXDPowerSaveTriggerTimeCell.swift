@@ -28,9 +28,8 @@ public final class MKBXDPowerSaveTriggerTimeCellModel: NSObject {
 
         // note 文案
         let noteMsg = "*After device keep static for \(time)s, it will stop advertising and disable alarm mode to enter into power saving mode until device moves. "
-        let noteSize = NSString.mk_size(withText: noteMsg,
-                                        andFont: MKFont.font(11),
-                                        andMaxSize: CGSize(width: MKScreen.width - 30, height: .greatestFiniteMagnitude))
+        let noteSize = noteMsg.size(withFont: MKFont.font(11),
+                                    maxSize: CGSize(width: MKScreen.width - 30, height: .greatestFiniteMagnitude))
 
         return topOffset + textFieldHeight + noteTopOffset + noteSize.height + bottomOffset
     }
@@ -67,8 +66,8 @@ public final class MKBXDPowerSaveTriggerTimeCell: MKSwiftBaseCell {
     }()
 
     private lazy var textField: MKSwiftTextField = {
-        let tf = MKSwiftUIAdaptor.createNormalTextField(text: "",
-                                                        placeHolder: "1~65535",
+        let tf = MKSwiftUIAdaptor.createTextField(text: "",
+                                                        placeholder: "1~65535",
                                                         textType: .realNumberOnly)
         tf.maxLength = 5
         tf.textChangedBlock = { [weak self] text in
@@ -131,9 +130,8 @@ public final class MKBXDPowerSaveTriggerTimeCell: MKSwiftBaseCell {
             make.centerY.equalTo(textField)
             make.height.equalTo(MKFont.font(15).lineHeight)
         }
-        let noteSize = NSString.mk_size(withText: noteMsgLabel.text ?? "",
-                                        andFont: noteMsgLabel.font,
-                                        andMaxSize: CGSize(width: MKScreen.width - 30, height: .greatestFiniteMagnitude))
+        let noteSize = (noteMsgLabel.text ?? "").size(withFont: noteMsgLabel.font,
+                                                      maxSize: CGSize(width: MKScreen.width - 30, height: .greatestFiniteMagnitude))
         noteMsgLabel.snp.remakeConstraints { make in
             make.left.equalTo(15)
             make.right.equalTo(-15)

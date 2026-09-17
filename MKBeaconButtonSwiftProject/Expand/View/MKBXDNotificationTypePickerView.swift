@@ -124,9 +124,8 @@ public final class MKBXDNotificationTypePickerView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        let typeMsgSize = NSString.mk_size(withText: typeLabel.text ?? "",
-                                           andFont: typeLabel.font,
-                                           andMaxSize: CGSize(width: MKScreen.width - 3 * 15 - pickerViewWidth, height: .greatestFiniteMagnitude))
+        let typeMsgSize = (typeLabel.text ?? "").size(withFont: typeLabel.font,
+                                                       maxSize: CGSize(width: MKScreen.width - 3 * 15 - pickerViewWidth, height: .greatestFiniteMagnitude))
         if dataModel?.needButton == true {
             dismissButton.snp.remakeConstraints { make in
                 make.right.equalTo(-15)
@@ -230,7 +229,7 @@ extension MKBXDNotificationTypePickerView: UIPickerViewDataSource, UIPickerViewD
 
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         guard row < dataList.count else { return nil }
-        return MKSwiftUIAdaptor.attributedString([dataList[row]],
+        return MKSwiftUIAdaptor.createAttributedString(strings:[dataList[row]],
                                                  fonts: [MKFont.font(13)],
                                                  colors: [MKColor.navBar])
     }

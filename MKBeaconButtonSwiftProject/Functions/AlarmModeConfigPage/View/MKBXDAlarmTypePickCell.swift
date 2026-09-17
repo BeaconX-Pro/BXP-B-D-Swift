@@ -170,7 +170,7 @@ extension MKBXDAlarmTypePickCell: UIPickerViewDataSource, UIPickerViewDelegate {
 
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         guard row < dataList.count else { return nil }
-        return MKSwiftUIAdaptor.attributedString([dataList[row]],
+        return MKSwiftUIAdaptor.createAttributedString(strings:[dataList[row]],
                                                  fonts: [MKFont.font(13)],
                                                  colors: [MKColor.navBar])
     }
