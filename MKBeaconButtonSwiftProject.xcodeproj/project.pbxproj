@@ -6,6 +6,12 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		00932F02305B778A0077D2FB /* NordicDFU in Frameworks */ = {isa = PBXBuildFile; productRef = 00932F01305B778A0077D2FB /* NordicDFU */; };
+		00932F05305B78A40077D2FB /* MKSwiftBeaconXCustomUI in Frameworks */ = {isa = PBXBuildFile; productRef = 00932F04305B78A40077D2FB /* MKSwiftBeaconXCustomUI */; };
+		00932F08305B78C70077D2FB /* MKSwiftBleModule in Frameworks */ = {isa = PBXBuildFile; productRef = 00932F07305B78C70077D2FB /* MKSwiftBleModule */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		00675A6E305AA02000E74831 /* MKBeaconButtonSwiftProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKBeaconButtonSwiftProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -22,6 +28,9 @@
 		00675A6B305AA02000E74831 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				00932F05305B78A40077D2FB /* MKSwiftBeaconXCustomUI in Frameworks */,
+				00932F08305B78C70077D2FB /* MKSwiftBleModule in Frameworks */,
+				00932F02305B778A0077D2FB /* NordicDFU in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -60,6 +69,11 @@
 				00675A70305AA02000E74831 /* MKBeaconButtonSwiftProject */,
 			);
 			name = MKBeaconButtonSwiftProject;
+			packageProductDependencies = (
+				00932F01305B778A0077D2FB /* NordicDFU */,
+				00932F04305B78A40077D2FB /* MKSwiftBeaconXCustomUI */,
+				00932F07305B78C70077D2FB /* MKSwiftBleModule */,
+			);
 			productName = MKBeaconButtonSwiftProject;
 			productReference = 00675A6E305AA02000E74831 /* MKBeaconButtonSwiftProject.app */;
 			productType = "com.apple.product-type.application";
@@ -88,6 +102,11 @@
 			);
 			mainGroup = 00675A65305AA02000E74831;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				00932F00305B778A0077D2FB /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */,
+				00932F03305B78A40077D2FB /* XCRemoteSwiftPackageReference "MKSwiftBeaconXCustomUI" */,
+				00932F06305B78C70077D2FB /* XCRemoteSwiftPackageReference "MKSwiftBleModule" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 00675A6F305AA02000E74831 /* Products */;
 			projectDirPath = "";
@@ -254,7 +273,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 27.0;
@@ -298,7 +317,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 27.0;
@@ -339,6 +358,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		00932F00305B778A0077D2FB /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NordicSemiconductor/IOS-DFU-Library.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.17.0;
+			};
+		};
+		00932F03305B78A40077D2FB /* XCRemoteSwiftPackageReference "MKSwiftBeaconXCustomUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MOKO-iOS-Base-Library/MKSwiftBeaconXCustomUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		00932F06305B78C70077D2FB /* XCRemoteSwiftPackageReference "MKSwiftBleModule" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MOKO-iOS-Base-Library/MKSwiftBleModule.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		00932F01305B778A0077D2FB /* NordicDFU */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00932F00305B778A0077D2FB /* XCRemoteSwiftPackageReference "IOS-DFU-Library" */;
+			productName = NordicDFU;
+		};
+		00932F04305B78A40077D2FB /* MKSwiftBeaconXCustomUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00932F03305B78A40077D2FB /* XCRemoteSwiftPackageReference "MKSwiftBeaconXCustomUI" */;
+			productName = MKSwiftBeaconXCustomUI;
+		};
+		00932F07305B78C70077D2FB /* MKSwiftBleModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00932F06305B78C70077D2FB /* XCRemoteSwiftPackageReference "MKSwiftBleModule" */;
+			productName = MKSwiftBleModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 00675A66305AA02000E74831 /* Project object */;
 	validationLevel = 1;
